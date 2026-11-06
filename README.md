@@ -2,11 +2,9 @@
 
 A simple and interactive **Bank Management System** built using Python and Streamlit. This application simulates basic banking operations, allowing users to create accounts, manage their balances, transfer money, and view transaction history through a user-friendly interface.
 
-## About the Project
+## Live Demo
 
-The Bank Management System is a Python-based web application designed to demonstrate how basic banking operations can be implemented using programming concepts, data handling, and a graphical user interface.
-
-The application provides separate user access through registration and login. Once logged in, users can manage their accounts and perform different banking operations.
+https://arpita-bank-management.streamlit.app/
 
 ## Features
 
