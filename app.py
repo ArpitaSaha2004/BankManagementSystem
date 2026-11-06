@@ -445,14 +445,13 @@ def render_dashboard(user):
         logout()
         return
     balance = Decimal(str(account["balance"]))
+    
     account_transactions = [
-        transaction
-        for transaction in data["transactions"]
-        if (
-            transaction.get("account_number") == account_number
-            or transaction.get("related_account") == account_number
-        )
+    transaction
+    for transaction in data["transactions"]
+    if transaction.get("account_number") == account_number
     ]
+
     account_transactions.sort(
         key=lambda transaction: transaction.get("created_at", ""),
         reverse=True
@@ -805,48 +804,117 @@ def render_dashboard(user):
                 "Your transaction history will appear here."
             )
 
+
     elif page == "My Profile":
 
         st.title("My Profile")
         st.caption("Your personal account information.")
+
         st.subheader("Account Information")
+
         col1, col2 = st.columns(2)
 
         with col1:
-            st.text_input(
-                "Full Name",
-                value=user.get("name", ""),
-                disabled=True
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: white;
+                    padding: 18px;
+                    border-radius: 10px;
+                    border: 1px solid #dce3ed;
+                    margin-bottom: 15px;
+                ">
+                    <div style="color: #718096; font-size: 13px;">
+                        Full Name
+                    </div>
+                    <div style="color: #193153; font-size: 17px;
+                                font-weight: 600; margin-top: 6px;">
+                        {html.escape(str(user.get("name", "")))}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
-            st.text_input(
-                "Email Address",
-                value=user.get("email", ""),
-                disabled=True
+
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: white;
+                    padding: 18px;
+                    border-radius: 10px;
+                    border: 1px solid #dce3ed;
+                ">
+                    <div style="color: #718096; font-size: 13px;">
+                        Email Address
+                    </div>
+                    <div style="color: #193153; font-size: 17px;
+                                font-weight: 600; margin-top: 6px;">
+                        {html.escape(str(user.get("email", "")))}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
 
         with col2:
-            st.text_input(
-                "Account Number",
-                value=account_number,
-                disabled=True
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: white;
+                    padding: 18px;
+                    border-radius: 10px;
+                    border: 1px solid #dce3ed;
+                    margin-bottom: 15px;
+                ">
+                    <div style="color: #718096; font-size: 13px;">
+                        Account Number
+                    </div>
+                    <div style="color: #193153; font-size: 17px;
+                                font-weight: 600; margin-top: 6px;">
+                        {html.escape(str(account_number))}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
-            st.text_input(
-                "Account Status",
-                value=account.get("status", "active").title(),
-                disabled=True
+
+            status = account.get("status", "active").title()
+            st.markdown(
+                f"""
+                <div style="
+                    background-color: white;
+                    padding: 18px;
+                    border-radius: 10px;
+                    border: 1px solid #dce3ed;
+                ">
+                    <div style="color: #718096; font-size: 13px;">
+                        Account Status
+                    </div>
+                    <div style="color: #16834a; font-size: 17px;
+                                font-weight: 600; margin-top: 6px;">
+                        {html.escape(str(status))}
+                    </div>
+                </div>
+                """,
+                unsafe_allow_html=True
             )
+
         st.write("")
         st.subheader("Account Summary")
+
         st.metric(
             "Current Balance",
             money_text(balance)
         )
+
         st.caption(
             f"Account Created: {user.get('created_at', 'Not available')}"
         )
-        st.caption("Profile details are read-only.")
 
-show_flash()
+        st.caption("Your account information is displayed securely.")
+
+    show_flash()
+
 
 if st.session_state.user_email:
     current_data = load_data()
