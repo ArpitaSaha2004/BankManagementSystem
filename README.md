@@ -1,63 +1,112 @@
 # Bank Management System
 
-A beginner-friendly banking simulation built with Python, Streamlit and JSON.
+A simple and interactive **Bank Management System** built using Python and Streamlit. This application simulates basic banking operations, allowing users to create accounts, manage their balances, transfer money, and view transaction history through a user-friendly interface.
+
+## About the Project
+
+The Bank Management System is a Python-based web application designed to demonstrate how basic banking operations can be implemented using programming concepts, data handling, and a graphical user interface.
+
+The application provides separate user access through registration and login. Once logged in, users can manage their accounts and perform different banking operations.
 
 ## Features
 
-- Customer registration and login
-- Password hashing (PBKDF2-HMAC-SHA256)
-- Automatically generated account numbers
-- Dashboard with account balance
-- Deposit and withdrawal
-- Transfers between demo accounts
-- Transaction history
-- JSON file storage
+- **User Registration:** Create a new bank account through the registration process.
+- **User Login:** Secure login using registered credentials.
+- **Dashboard:** View account information and balance.
+- **Deposit Money:** Add money to an account.
+- **Withdraw Money:** Withdraw money while checking available balance.
+- **Money Transfer:** Transfer funds between registered accounts.
+- **Transaction History:** View records of deposits, withdrawals, and transfers.
+- **My Profile:** View personal account information.
+- **Account Management:** Automatically generate unique account numbers.
+- **Data Storage:** Store user, account, and transaction information using JSON.
 
-## Run locally
+## Technologies Used
 
-1. Install Python 3.10 or newer.
-2. Open a terminal in this project folder.
-3. Create and activate a virtual environment:
+| Technology | Purpose |
+|---|---|
+| Python | Application logic and backend functionality |
+| Streamlit | User interface and web application |
+| JSON | Data storage |
+| HTML & CSS | Interface styling through Streamlit |
 
-   **macOS/Linux**
-   ```bash
-   python3 -m venv .venv
-   source .venv/bin/activate
-   ```
+## 📂 Project Structure
 
-   **Windows**
-   ```powershell
-   py -m venv .venv
-   .venv\Scripts\activate
-   ```
+```text
+BankManagementSystem/
+│
+├── .streamlit/
+│   └── config.toml
+│
+├── app.py
+├── requirements.txt
+├── README.md
+├── .gitignore
+└── bank_data.json
+```
 
-4. Install dependencies:
+**Note:** `bank_data.json` is generated locally when the application needs it and is excluded from GitHub to avoid exposing user data.
 
-   ```bash
-   pip install -r requirements.txt
-   ```
+## ⚙️ Installation and Setup
 
-5. Start the app:
+Follow these steps to run the project locally.
 
-   ```bash
-   streamlit run app.py
-   ```
+### 1. Clone the Repository
 
-Streamlit will print a local URL, usually http://localhost:8501.
+```bash
+git clone https://github.com/ArpitaSaha2004/BankManagementSystem.git
+```
 
-## Deploy to Streamlit Community Cloud
+### 2. Navigate to the Project Directory
 
-1. Create a GitHub repository.
-2. Upload `app.py`, `requirements.txt`, `README.md` and `bank_data.json`.
-3. Do not upload real customer data. Keep `bank_data.json` empty.
-4. Sign in at https://share.streamlit.io/ using GitHub.
-5. Select the repository and set the main file path to `app.py`.
-6. Deploy.
+```bash
+cd BankManagementSystem
+```
 
-### Important JSON hosting limitation
+### 3. Create a Virtual Environment
 
-Streamlit Community Cloud is not a durable database host. Files written by an app may be lost when the app restarts, redeploys or its environment is replaced. A JSON file is also not safe for concurrent writes from multiple users. This deployment is suitable only as a demonstration with disposable sample data. For persistent multi-user deployment, replace JSON storage with a hosted database such as PostgreSQL.
+```bash
+python3 -m venv .venv
+```
 
-## Security and scope
+### 4. Activate the Virtual Environment
 
-This is an educational portfolio simulation only. It does not connect to banks, payment networks or real financial accounts. Do not enter real personal information, reuse passwords, or deposit real money. Passwords are hashed before being stored, but JSON-file storage is not suitable for production banking or sensitive customer records.
+For macOS / Linux:
+
+```bash
+source .venv/bin/activate
+```
+
+For Windows:
+
+```bash
+.venv\Scripts\activate
+```
+
+### 5. Install Dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+### 6. Run the Application
+
+```bash
+streamlit run app.py
+```
+
+The application will open in your browser, usually at:
+
+```text
+http://localhost:8501
+```
+
+## Data and Security
+
+- Passwords are stored as password hashes rather than plain text.
+- User and transaction data are stored in a local JSON file.
+- The JSON database is excluded from version control using `.gitignore`.
+
+## Author
+
+**Arpita Saha**
